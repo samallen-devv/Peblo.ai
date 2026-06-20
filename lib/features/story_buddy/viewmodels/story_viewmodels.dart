@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/services/tts_service.dart';
@@ -92,6 +93,7 @@ class StoryViewModel extends StateNotifier<StoryState> {
         wrongAnswer: false,
       );
     } else {
+      HapticFeedback.mediumImpact();
       state = state.copyWith(
         wrongAnswer: true,
       );
