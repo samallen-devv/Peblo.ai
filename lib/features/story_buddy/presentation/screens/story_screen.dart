@@ -98,13 +98,26 @@ class StoryScreen extends ConsumerWidget {
                         child: QuizCard(
                           quiz: state.quiz!,
                           onAnswerSelected: (answer) {
+                            final isCorrect = answer == state.quiz?.answer;
+
                             ref
                                 .read(
                                   storyViewModelProvider.notifier,
                                 )
-                                .checkAnswer(
-                                  answer,
-                                );
+                                .checkAnswer(answer);
+
+                            if (!isCorrect) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Oops! Try again 😊',
+                                  ),
+                                  duration: Duration(
+                                    seconds: 1,
+                                  ),
+                                ),
+                              );
+                            }
                           },
                         ),
                       ),

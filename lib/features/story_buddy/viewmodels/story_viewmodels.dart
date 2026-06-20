@@ -56,7 +56,7 @@ class StoryViewModel extends StateNotifier<StoryState> {
   final dynamic _repository;
 
   static const String storyText =
-      "Once upon a time, a clever little robot named Pip lost his shiny blue gear in the Whispering Woods...";
+      "Once upon a time, a clever little robot named Pip lost his shiny blue gear in the Whispering Woods. Pip searched near glowing flowers and sparkling trees but could not find it. With courage and curiosity, Pip continued exploring until he discovered clues that led him to his missing blue gear.";
 
   Future<void> readStory() async {
     try {
@@ -88,12 +88,15 @@ class StoryViewModel extends StateNotifier<StoryState> {
 
   void checkAnswer(String selectedAnswer) {
     if (selectedAnswer == state.quiz?.answer) {
+      HapticFeedback.heavyImpact();
+
       state = state.copyWith(
         status: StoryStatus.success,
         wrongAnswer: false,
       );
     } else {
       HapticFeedback.mediumImpact();
+
       state = state.copyWith(
         wrongAnswer: true,
       );
@@ -101,18 +104,19 @@ class StoryViewModel extends StateNotifier<StoryState> {
       Future.delayed(
         const Duration(milliseconds: 500),
         () {
-          state = state.copyWith(
-            wrongAnswer: false,
-          );
+          if (mounted) {
+            state = state.copyWith(
+              wrongAnswer: false,
+            );
+          }
         },
       );
     }
   }
 
   void retry() {
-    state = state.copyWith(
+    state = const StoryState(
       status: StoryStatus.idle,
-      errorMessage: null,
     );
   }
 }
