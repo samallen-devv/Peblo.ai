@@ -19,7 +19,7 @@ class OptionButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF4FC3F7),
           foregroundColor: Colors.white,
-          elevation: 6,
+          elevation: 8,
           padding: const EdgeInsets.symmetric(
             vertical: 18,
           ),
