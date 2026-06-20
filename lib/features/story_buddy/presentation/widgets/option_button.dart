@@ -17,11 +17,14 @@ class OptionButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF4FC3F7),
+          foregroundColor: Colors.white,
+          elevation: 6,
           padding: const EdgeInsets.symmetric(
-            vertical: 16,
+            vertical: 18,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
         child: Text(
