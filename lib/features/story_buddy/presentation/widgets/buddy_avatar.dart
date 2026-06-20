@@ -43,9 +43,59 @@ class _BuddyAvatarState extends State<BuddyAvatar>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/images/robot_buddy.png',
-              height: widget.isSuccess ? 220 : 200,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.auto_awesome,
+                  color: Colors.amber,
+                  size: 30,
+                ),
+                SizedBox(width: 8),
+                Icon(
+                  Icons.star,
+                  color: Colors.orange,
+                  size: 24,
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color(0xFFEDE9FE),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.purple.withValues(
+                      alpha: 0.2,
+                    ),
+                    blurRadius: 30,
+                    spreadRadius: 5,
+                  ),
+                ],
+              ),
+              child: Image.asset(
+                'assets/images/robot_buddy.png',
+                height: widget.isSuccess ? 200 : 180,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.star,
+                  color: Colors.orange,
+                  size: 24,
+                ),
+                SizedBox(width: 8),
+                Icon(
+                  Icons.auto_awesome,
+                  color: Colors.amber,
+                  size: 30,
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             Text(
@@ -53,6 +103,14 @@ class _BuddyAvatarState extends State<BuddyAvatar>
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              widget.isSuccess ? 'You are amazing!' : 'Ready for a fun story?',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey.shade700,
               ),
             ),
           ],
