@@ -56,7 +56,7 @@ class StoryViewModel extends StateNotifier<StoryState> {
   final dynamic _repository;
 
   static const String storyText =
-      "Once upon a time, a clever little robot named Pip lost his shiny blue gear in the Whispering Woods. Pip searched near glowing flowers and sparkling trees but could not find it. With courage and curiosity, Pip continued exploring until he discovered clues that led him to his missing blue gear.";
+      "Once upon a time, a clever little robot named Pip lost his shiny blue gear...";
 
   Future<void> readStory() async {
     try {
